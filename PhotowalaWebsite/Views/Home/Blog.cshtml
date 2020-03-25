@@ -1,0 +1,211 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Blog>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blogs- Subha Weddings Australia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+    <link href="~/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="~/css/animate.css" rel="stylesheet" />
+
+
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+
+
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
+
+
+    <link href="~/css/magnific-popup.css" rel="stylesheet" />
+
+
+    <link href="~/css/aos.css" rel="stylesheet" />
+
+
+    <link href="~/css/ionicons.min.css" rel="stylesheet" />
+
+
+    <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+
+    <link href="~/css/jquery.timepicker.css" rel="stylesheet" />
+
+
+
+    <link href="~/css/flaticon.css" rel="stylesheet" />
+
+
+    <link href="~/css/icomoon.css" rel="stylesheet" />
+
+
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    
+        <div id="colorlib-page">
+            <a href="index" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center bg-dark">
+                <h1 id="colorlib-logo"><a href="@Url.Action("Index","home")"><img height="100" width="180" src="~/images/new logo.png" />AUSTRILA </a></h1>
+                <nav id="colorlib-main-menu" role="navigation">
+                    <ul>
+                        <li><a href="@Url.Action("Index","home")">Home</a></li>
+                        <li><a href="@Url.Action("gallery","home")">Gallery</a></li>
+                        <li><a href="@Url.Action("about","home")">About</a></li>
+                        <li><a href="@Url.Action("services","home")">Services</a></li>
+                        <li class="colorlib-active"><a href="@Url.Action("blog","home")">Blog</a></li>
+                        <li><a href="@Url.Action("Contact","home")">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="colorlib-footer">
+                    <h3>Follow Us Here!</h3>
+                    <div class="d-flex justify-content-center">
+                        <ul class="d-flex align-items-center">
+                            <li class="d-flex align-items-center jusitfy-content-center"><a href="http://facebook.com/nabinn.chautariyaa"><i class="icon-facebook"></i></a></li>
+                            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li>
+                            <li class="d-flex align-items-center jusitfy-content-center"><a href="https://www.youtube.com/subhaweddings?fbclid=IwAR1kVP3cRuQK8vjS2bOJpogXgjaZL6SfhOIEOGBSD88B-2lRMZt-LBx4688"><i class="icon-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside> <!-- END COLORLIB-ASIDE -->
+            <div id="colorlib-main">
+                <section class="ftco-section bg-light ftco-bread">
+                    <div class="container">
+                        <div class="row no-gutters slider-text align-items-center">
+                            <div class="col-md-9 ftco-animate">
+                                <p class="breadcrumbs"><span class="mr-2">Home</span> <span>Blog</span></p>
+                                <h1 class="mb-3 bread">Read Our Articles</h1>
+                                <p>
+                                    After the wedding day, those photos and video are all that's left to help you remember the day and it brings love, joy and togetherness in families.
+                                    <br />
+                                    And don’t forget about the wedding video --
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="ftco-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    @foreach (var photos in Model)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="blog-entry ftco-animate">
+
+                                                <a class="img img-2 myblogs" name="blogid" style="background-image: url(@photos.Image);" href="@Url.Action("single","home",new { id=photos.BlogID})"></a>
+
+                                                <div class="text text-2 pt-2 mt-3">
+                                                    <h3 class="mb-2"><a href="single.html">@photos.Title</a></h3>
+                                                    <div class="meta-wrap">
+                                                        <p class="meta">
+                                                            <span>@photos.Date</span>
+                                                            <span><a href="single">Photography</a></span>
+
+                                                        </p>
+                                                    </div>
+                                                    <p class="mb-4">@photos.Discription</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    }
+                                </div><!-- END-->
+
+                            </div>
+                            <div class="col-lg-4 sidebar ftco-animate bg-light">
+
+                                <div class="sidebar-box ftco-animate">
+                                    <h3 class="sidebar-heading">Categories</h3>
+                                    <ul class="categories">
+                                        @Html.Action("catagoryIndex", "Catagories")
+
+
+                                    </ul>
+                                </div>
+
+
+
+
+
+                            </div><!-- END COL -->
+                        </div>
+                    </div>
+                </section>
+                <footer class="ftco-footer ftco-bg-dark ftco-section">
+                    <div class="container px-md-5">
+                        <div class="row mb-5">
+
+
+                            <div class="col-md-8">
+                                <div class="ftco-footer-widget mb-4">
+                                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                                    <div class="block-23 mb-3">
+                                        <ul>
+                                            <li><span class="icon icon-map-marker"></span><span class="text">16 / 1 Gregory Hills Dr, Gregory Hills NSW 2557,Sydney  Australia</span></li>
+                                            <li><a><span class="icon icon-phone"></span><span class="text">0423735856</span></a></li>
+                                            <li><a><span class="icon icon-envelope"></span><span class="text">nabinchautariya@gmail.com</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-outline-primary mt-lg-5" href="@Url.Action("Contact","home")">Contact Us</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr class="bg-primary" />
+                                <p class="text-center">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Subha Weddings</a>
+
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                                <h6 class="text-center">Designed And Powered by :- <span>Binet Technology</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div><!-- END COLORLIB-MAIN -->
+        </div>
+    <!-- END COLORLIB-PAGE -->
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="~/js/popper.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.easing.1.3.js"></script>
+        <script src="~/js/jquery.waypoints.min.js"></script>
+        <script src="~/js/jquery.stellar.min.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/js/aos.js"></script>
+        <script src="~/js/jquery.animateNumber.min.js"></script>
+        <script src="~/js/bootstrap-datepicker.js"></script>
+        <script src="~/js/jquery.timepicker.min.js"></script>
+        <script src="~/js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="~/js/google-map.js"></script>
+        <script src="~/js/main.js"></script>
+        
+    </body>
+</html>
+

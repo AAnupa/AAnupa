@@ -1,0 +1,138 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Subha Weddings</title>
+
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    @if (User.IsInRole("Admin"))
+    {
+    <div class="nav navbar-nav" role="navigation">
+            <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light list-inline justify-content-center">
+                <div class="row">
+                    <a class="navbar-brand" href="#"><img height="60" width="100" src="~/images/new logo.png" /><br /></a>
+                    <div class="navbar navbar-collapse align-content-center">
+                        <div class="nav-item active">
+                            <a class="nav-link text-dark ml-4 mt-4" href="@Url.Action("Index","home")">HOME </a>
+                        </div>
+                       
+                        <div class="nav-item  nav-link mt-4">
+                            <a class="nav-item text-dark ml-4" href="@Url.Action("Packages","home")">PACKAGES</a>
+                        </div>
+                        <div class="nav-item nav-link mt-4">
+                            <a class="nav-item text-dark ml-4" href="@Url.Action("contact","home")">CONTACT</a>
+                        </div>
+                        <div class="nav-item nav-link mt-4">
+                            <a class="nav-item text-dark ml-4" href="@Url.Action("Index","reviews")">OUR WORKS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    }
+     else
+          {
+                    <div class="nav navbar-nav" role="navigation">
+                        <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light list-inline justify-content-center">
+                            <div class="row">
+                                <a class="navbar-brand" href="#"><img height="60" width="100" src="~/images/new logo.png" /><br /></a>
+                                <div class="navbar navbar-collapse align-content-center">
+                                    <div class="nav-item active">
+                                        <a class="nav-link text-dark ml-4 mt-4" href="@Url.Action("Index","home")">HOME </a>
+                                    </div>
+                                    <div class="nav-item  nav-link mt-4">
+                                        <a class="nav-item text-dark ml-4 " href="@Url.Action("about","home")">ABOUT</a>
+                                    </div>
+
+                                    <div class="nav-item dropdown nav-link mt-4">
+                                        <a class="nav-item dropbtn text-dark ml-4" id="work"> OUR WORKS</a>
+                                        <div class="dropdown-content">
+                                            <a href="@Url.Action("Wedding","Works")">WEDDING</a>
+                                            <a href="@Url.Action("Maternity","Works")">MATERNITY</a>
+                                            <a href="@Url.Action("Engagement","Works")">ENGAGEMENT</a>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="nav-item  nav-link mt-4">
+                                        <a class="nav-item text-dark ml-4" href="@Url.Action("Packages","home")">PACKAGES</a>
+                                    </div>
+                                    <div class="nav-item nav-link mt-4">
+                                        <a class="nav-item text-dark ml-4" href="@Url.Action("contact","home")">CONTACT</a>
+                                    </div>
+                                    <div class="nav-item nav-link mt-4">
+                                        <a class="nav-item text-dark ml-4" href="@Url.Action("Index","reviews")">REVIEWS</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    <div class="container body-content">
+                        @RenderBody()
+
+                    </div>
+
+                    <div>
+                        <hr />
+                        <footer>
+                        </footer>
+                    </div>
+
+                    @Scripts.Render("~/bundles/jquery")
+                    @Scripts.Render("~/bundles/bootstrap")
+                    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+</style>
+

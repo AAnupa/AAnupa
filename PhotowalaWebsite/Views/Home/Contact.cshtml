@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Image>
+
+    <div class="container-fluid scroll mt-5">
+        <p class="justify-content-center mr-5 ml-5" style="font-family:Arial;color:black;">
+            We love meeting our clients personally and getting to know them, so if you think we are a match; lets schedule a coffee date, facetime call or a chat over the phone- which ever works best for you!!
+            Ideally, we'd love to attend your wedding not just as your photographers, but as your friends!!
+        </p>
+
+        <h1 class="text-center">Contact Us</h1>
+        <h3 class="text-center">Sydney, Australia</h3>
+        <h3 class="text-center">christypra2017@gmail.com</h3>
+        <h3 class="text-center">Tel: +61 426955385</h3>
+
+        <div class="row h-100 justify-content-center align-items-center">
+
+            <form class="form-example" action="" method="post">
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control name" id="name" placeholder="Name..." name="name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="number" class="form-control phone" id="phone" placeholder="Phone..." name="phone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <input type="email" class="form-control col-12 email" id="email" placeholder="Email..." name="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <input type="datetime" class="form-control col-12 date" id="date" placeholder="Event/Wedding Date..." name="date">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <textarea rows="3" type="text" class="form-control col-12 message" id="message" placeholder="Messages..." name="message"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <button type="submit" class="form-control col-12 btn btn-primary btn-customized"> <i class="fas fa-paper-plane"></i>Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+        <footer>
+            <div class="mt-auto" id="colorlib-main" style="position:absolute">
+                <div class="row" id="lightslider">
+
+                    <div class="grids d-flex c-content-between carousel slide" id="carouselExampleSlidesOnly" data-ride="carousel">
+                        <div class="container col-md-12 row">
+
+                            @foreach (var items in Model)
+                            {
+                                <div class="carousel col-md-3">
+
+                                    <img class="w-100 h-100 img-fluid" src="@items.ImagePath" alt="" />
+
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+
+            (function () {
+                var imgLen = document.getElementById('carouselExampleSlidesOnly');
+                var images = imgLen.getElementsByTagName('img');
+                var counter = 1;
+
+                if (counter <= images.length) {
+                    setInterval(function () {
+                        images[0].src = images[counter].src;
+                        console.log(images[counter].src);
+                        counter++;
+
+                        if (counter === images.length) {
+                            counter = 1;
+                        }
+                    }, 4000);
+                }
+            })();
+
+        </script>
+
+
+

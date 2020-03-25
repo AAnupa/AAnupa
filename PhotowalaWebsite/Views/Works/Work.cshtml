@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Work>
+
+@{
+    ViewBag.Title = "Work";
+}
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <h3>Wedding</h3>
+                <p>
+                    Marriage is very special moment for every man's and woman's life.They want to take their relationship to the next level.
+                    Marriage is an essential part of human civilization.It brings love, joy and togetherness in families.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3>Maternity</h3>
+                <p>
+                    Maternity is a very beautiful and very special moment for every womens.
+                    We offer you a service to capture your this beautiful moment in very high touch photo and videography which gives you memory of this event for life time.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3>Engagement</h3>
+                <p>
+                    An engagement  is the relationship between two people who want to get married.
+                    It is very joyful and excited moment for every boy and girl.
+                </p>
+
+            </div>
+        </div>
+        <div class="">
+            @foreach (var item in Model)
+            {
+                <img class="align-content-sm-around" src="@item.ImagePath">
+            }
+        </div>
+    </div>

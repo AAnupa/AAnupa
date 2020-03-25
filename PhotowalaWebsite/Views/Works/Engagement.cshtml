@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Work>
+
+@{
+}
+    <div class="row mt-5">
+        @foreach (var item in Model.Where(x => x.Tag.Replace(" ", "") == "Engagement"))
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="">
+                        <a href="@item.Link" target="_blank">
+                            <img class="w-100" height="300" src="@item.ImagePath" />
+                            </a>
+                    </div>
+                    
+                    <div class="card-body text-center">
+                        <h3 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </h3>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>

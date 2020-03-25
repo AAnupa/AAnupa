@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+
+<table class="table table-bordered" id="teamPhotoTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.ImagePath" style="width:80px; height:80px;" class="figure-img img-fluid" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tag)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ImageID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ImageID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ImageID })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot></tfoot>
+</table>

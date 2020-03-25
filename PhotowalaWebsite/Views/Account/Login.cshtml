@@ -1,0 +1,109 @@
+﻿@model PhotowalaWebsite.Models.User
+@using PhotowalaWebsite.Models
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+        <script>
+            addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false); function hideURLbar() { window.scrollTo(0, 1); }
+        </script>
+
+
+        <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+        <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+        <style>
+            html, body {
+                background-image: url('../../images/loginimg.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                font-family: Arial;
+               
+            }
+
+            .card {
+                height: 370px;
+                margin-top: auto;
+                margin-bottom: auto;
+                width: 400px;
+                background-color: rgba(0,0,0,0.5) !important;
+            }
+
+
+
+            .input-group-prepend span {
+                width: 50px;
+                background-color: darkslateblue;
+                color: black;
+                border: 0 !important;
+            }
+
+            .login_btn:hover {
+                color: black;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="=" row" style="margin-top:90px;">
+            <div class="d-flex col-md-6 justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center text-white">Sign In</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="input-group form-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @type = "text", name = "name", placeholder = "Username", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="input-group form-group" style="margin-top:40px;">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", name = "name", placeholder = "Password", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="submit" value="Login" class="btn float-right login_btn btn-primary text-truncate font-weight-bold" style="margin-top:20px;">
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center text-white">
+                            Don't have an account?<a href="~/Views/Account/Register.cshtml">SIGN UP!</a>
+
+                        </div>
+                        <div class="d-flex justify-content-center text-white">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+
+    </body>
+</html>
+        }

@@ -1,0 +1,156 @@
+﻿@model PhotowalaWebsite.Models.Image
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#home" role="tab" data-toggle="tab" class="nav-link active" id="home-tab">Uplpoad Images</a>
+        </li>
+        <li class="nav-item">
+            <a href="#photoshome" role="tab" data-toggle="tab" class="nav-link" id="profile-tab">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#background" role="tab" data-toggle="tab" class="nav-link" id="profile-tab">Gallery</a>
+        </li>
+        <li class="nav-item">
+            <a href="#ourteam" role="tab" data-toggle="tab" class="nav-link" id="profile-tab">our Team</a>
+        </li>
+
+
+    </ul>
+    <div class="tab-content mt-3">
+        <div class="tab-pane active in" id="home" role="tabpanel" aria-labelledby="home-tab">
+            @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", list = "name" } })
+
+
+                            <datalist id="name">
+                                <option value="Home"></option>
+                                <option value="Gallery"></option>
+                                <option value="Team"></option>
+                                <option value="Contact"></option>
+                            </datalist>
+                            @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+
+                            <h4 class="text-primary" id="demo"></h4>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+
+                            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="title">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="team" style="display: none">
+                        @Html.LabelFor(model => model.TeamName,"Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TeamName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TeamName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group" id="position" style="display: none">
+                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="tag">
+
+                        @Html.LabelFor(model => model.Tag, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Tag, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="des">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextArea("Description", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="tab-pane fade in" id="photoshome" role="tabpanel" aria-labelledby="profile-tab">
+            <br />
+            @Html.Action("HomePhoto", "Images")
+        </div>
+        <div class="tab-pane fade in" id="background" role="tabpanel" aria-labelledby="profile-tab">
+            <br />
+            @Html.Action("GalleryPhoto", "Images")
+        </div>
+        <div class="tab-pane fade in" id="ourteam" role="tabpanel" aria-labelledby="profile-tab">
+            <br />
+            @Html.Action("TeamPhoto", "Images")
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#Location').on('input', function () {
+                var userText = $(this).val();
+
+                $("#name").find("option").each(function () {
+                    if ("Team" == userText) {
+                        
+                        $("#des").show();
+                        $("#team").show();
+                        $("#position").show();
+                        $("#title").hide();
+                        $("#tag").hide();
+                        
+                    }
+                    
+                })
+            })
+
+        });
+
+    </script>
+}

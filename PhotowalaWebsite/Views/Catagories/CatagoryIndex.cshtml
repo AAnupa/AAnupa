@@ -1,0 +1,11 @@
+﻿@model IEnumerable<PhotowalaWebsite.Models.Catagory>
+@{
+    ViewBag.Title = "CatagoryIndex";
+    Layout = null;
+}
+
+@foreach (var cat in Model)
+{
+    <li><a>@cat.CatagoryName </a></li>
+}
+
